@@ -4,8 +4,21 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useEffect } from 'react';
 
 export default function HomeScreen() {
+  useEffect(()=>{
+    (async()=>{
+      try {
+        const res = await fetch('https://prepaid.desco.org.bd/api/tkdes/customer/getCustomerInfo?accountNo=13130589');
+        console.log(await res.json());
+      } catch (error) {
+        console.log(error);
+      }
+    })()
+  },[])
+
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
